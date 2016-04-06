@@ -1,6 +1,7 @@
 - hosts: app
-  remote_user: root
-  sudo: true
+  remote_user: debian
+  become_user: root
+  become: true
   tasks:
     - name: Install KIRIES [add syslog-ng key]
       apt_key:

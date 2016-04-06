@@ -1,6 +1,8 @@
 ---
 - hosts: app
-  remote_user: root
+  remote_user: debian
+  become_user: root
+  become: true
   handlers:
     - name: reload crudtest
       shell: sudo /etc/init.d/crudtest stop && sudo /etc/init.d/crudtest start
@@ -25,4 +27,5 @@
 
   - name: reload crudtest
     shell: /etc/init.d/crudtest stop && /etc/init.d/crudtest start
-    sudo: true
+    become_user: root
+    become: true
