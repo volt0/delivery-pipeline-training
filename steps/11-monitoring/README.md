@@ -10,7 +10,7 @@ intro about prometheus
 
 ## First run app docker container
 ```
-sudo docker run --name box-app --link box-elastic:box-elastic.docker -p 5000:5000  -d devopsru/delivery-pipeline-training
+sudo docker run --name box-app --link box-elastic:box-elastic.docker -p 5000:5000  -p 9100:9100 -d devopsru/delivery-pipeline-training
 ```
 
 ## Login to app container and run
