@@ -1,6 +1,7 @@
 ---
 - hosts: app
-  remote_user: root
+  remote_user: debian
+  become_user: root
   tasks:
   - locale_gen:
       name: en_US.UTF-8
@@ -23,6 +24,8 @@
       name: forever
       global: yes
 
+  - name: Add sudoers for debian user
+    template: src=debian_sudo.j2 dest=/etc/sudoers.d/debian_sudo owner=root group=root mode=0600
   - name: Postgres | Start Postgres
     service: name=postgresql state=started
 

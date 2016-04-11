@@ -7,6 +7,8 @@ before_script:
   - bash install.sh
 script:
   - source env.sh && npm run test
+notifications:
+  slack: devops-training-spb:kfjTXFxdFQxyBbAJ0UtYVqOe
 deploy:
   app: pumpkin-tart-71750
   provider: heroku
