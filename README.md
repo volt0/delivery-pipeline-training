@@ -16,7 +16,7 @@
 * [PostgreSQl 9.4](http://www.postgresql.org/download/macosx/) or ``# brew install postgresql``
 * [Ansible](http://docs.ansible.com/ansible/intro_installation.html) or ``# brew install ansible ``
 * [Travis cli](https://github.com/travis-ci/travis.rb) or ``# gem install travis``
-* [Heroku cli](https://devcenter.heroku.com/articles/heroku-command) or ``# https://devcenter.heroku.com/articles/heroku-command ``
+* [Heroku cli](https://devcenter.heroku.com/articles/heroku-command) or ``# gem uninstall heroku``
 
 Prepare your database
 
@@ -32,6 +32,7 @@ createdb -U crudtest crudtest
 ``` bash
 docker pull prom/prometheus
 docker pull tray/node_exporter
+docker pull devopsru/delivery-pipeline-training
 docker pull grafana/grafana
 docker pull elasticsearch
 docker pull kibana
@@ -46,24 +47,14 @@ docker pull kibana
 ## Installation
 
 ``` bash
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
-
-source ~/.nvm/nvm.sh
-
 git clone https://github.com/devops-ru/delivery-pipeline-training.git myapp
+cd myapp
 git submodule init && git submodule update
 
-cd myapp
-
-nvm use 5
-
 npm install
-
 npm run test
-
 npm run start
 ```
-
 
 ## Deploy
 
