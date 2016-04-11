@@ -2,6 +2,30 @@
 
 [![Build Status](https://travis-ci.org/devops-ru/delivery-pipeline-training.svg?branch=master)](https://travis-ci.org/devops-ru/delivery-pipeline-training)
 
+## Slack
+[devops-training-spb.slack.com](https://devops-training-spb.slack.com)
+
+## Before start
+
+### Need to be installed
+
+* Node js (recomended v5.0)
+* PostgreSQl 9.4
+* Docker v1.9 - 1.10
+* Ansible v2
+* Ruby
+  * Travis cli
+  * Heroku cli
+
+### Pull docker images
+
+```
+docker pull prom/prometheus
+docker pull grafana/grafana
+docker pull elasticsearch
+docker pull kibana
+```
+
 
 ## Installation
 
@@ -15,7 +39,7 @@ git submodule init && git submodule update
 
 cd myapp
 
-nvm use 0.5
+nvm use 5
 
 npm install
 
