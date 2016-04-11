@@ -7,29 +7,45 @@
 
 ## Before start
 
-### Need to be installed
+### Need to be installed (for Mac OS)
 
-* Node js (recomended v5.0)
-* PostgreSQl 9.4
-* Docker v1.9 - 1.10
-* Ansible v2
-* Ruby
-  * Travis cli
-  * Heroku cli
+* [Docker](https://docs.docker.com/engine/installation/mac/)
+* [Kitematic](https://kitematic.com/)
+* [Brew](http://brew.sh/)
+* [Node js](https://nodejs.org/en/download/) or ``# brew update && brew install nodejs``
+* [PostgreSQl 9.4](http://www.postgresql.org/download/macosx/) or ``# brew install postgresql``
+* [Ansible](http://docs.ansible.com/ansible/intro_installation.html) or ``# brew install ansible ``
+* [Travis cli](https://github.com/travis-ci/travis.rb) or ``# gem install travis``
+* [Heroku cli](https://devcenter.heroku.com/articles/heroku-command) or ``# https://devcenter.heroku.com/articles/heroku-command ``
+
+Prepare your database
+
+``` bash
+brew services start postgresql
+createuser -s crudtest -P
+# password: crudtest
+createdb -U crudtest crudtest
+```
 
 ### Pull docker images
 
-```
+``` bash
 docker pull prom/prometheus
+docker pull tray/node_exporter
 docker pull grafana/grafana
 docker pull elasticsearch
 docker pull kibana
 ```
 
+### Create services accounts
+
+[Heroku](https://signup.heroku.com/login)
+[New Relic](https://newrelic.com/signup)
+
 
 ## Installation
 
-```
+``` bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 
 source ~/.nvm/nvm.sh
@@ -70,7 +86,7 @@ travis encrypt $(heroku auth:token) --add deploy.api_key
 
 ### Full run
 
-```
+``` bash
 sudo docker run --name box-elastic -p 9200:9200 -d elasticsearch
 
 sudo docker run --name=box-kibana -p 5601:5601 --link box-elastic:elasticsearch -d  kibana
