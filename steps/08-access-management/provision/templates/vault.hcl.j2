@@ -1,9 +1,0 @@
-backend "file" {
-  path = "/opts/vault/vault"
-}
-
-listener "tcp" {
-  address = "0.0.0.0:8200"
-  tls_cert_file = "/opt/vault/vault.crt"
-  tls_key_file = "/opt/vault/vault.key"
-}
