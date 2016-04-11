@@ -1,2 +1,6 @@
 [app]
-box-app.docker
+box-1.docker
+box-4.docker
+[db]
+box-2.docker
+box-3.docker

@@ -2,7 +2,9 @@
 - hosts: app
   remote_user: root
   tasks:
-  - locale_gen: name=en_US.UTF-8 state=present
+  - locale_gen:
+      name: en_US.UTF-8
+      state: present
   - name: Install required system packages.
     apt: pkg={{ item }} state=installed
     tags: packages

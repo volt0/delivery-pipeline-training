@@ -1,7 +1,5 @@
 provider "aws" {
-    access_key = "<access>"
-    secret_key= "<secret>"
-    region = "us-east-1"
+    profile  = "cloud"
 }
 
 resource "aws_instance" "test" {

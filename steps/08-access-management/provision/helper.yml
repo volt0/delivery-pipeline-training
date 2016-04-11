@@ -1,0 +1,26 @@
+- hosts: vaulthost
+  remote_user: ubuntu
+  sudo: true
+  tasks:
+  - stat: path=/usb/bin/vault
+    register: vault_installed
+  - when: "vault_installed.stat is undefined"
+    block:
+    - name: Install required system packages.
+      apt: pkg={{ item }} state=installed
+      tags: packages
+      with_items:
+        - wget
+        - unzip
+    - name: Download vault
+      shell: cd /tmp && wget https://releases.hashicorp.com/vault/0.5.2/vault_0.5.2_linux_amd64.zip
+    - name: Unzip
+      shell: cd /tmp && unzip vault_0.5.2_linux_amd64.zip
+    - name: Move to bin
+      shell: mv /tmp/vault /usr/bin/vault
+
+  - name: prepare dir
+    tags: current
+    file: path=/opt/vault mode=0700 state=directory owner=ubuntu group=ubuntu
+  - name: config
+    template: src=templates/vault.hcl.j2 dest=/opt/vault/vault.hcl group=ubuntu owner=ubuntu mode=0700
