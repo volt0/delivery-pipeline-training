@@ -7,4 +7,4 @@ scrape_configs:
   - job_name: 'prometheus'
 
     target_groups:
-      - targets: ['box-app.docker:9100']
+      - targets: ['node-exporter:9100']
