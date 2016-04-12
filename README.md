@@ -90,6 +90,7 @@ sudo docker-compose up
 
 Or run each container
 
+:TODO Add run node_exporter
 
 ``` bash
 sudo docker run --name box-elastic -p 9200:9200 -d elasticsearch
