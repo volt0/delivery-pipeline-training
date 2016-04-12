@@ -1,6 +1,5 @@
 - hosts: app
-  remote_user: debian
-  become_user: root
+  remote_user: root
   become: true
   tasks:
     - name: Clone Node exporter

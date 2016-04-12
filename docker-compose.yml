@@ -1,0 +1,57 @@
+version: '2'
+services:
+  
+  # App
+  app:
+    image: devopsru/delivery-pipeline-training
+    ports:
+      - "5000:5000"
+    links:
+      - "elastic:box-elastic.docker"
+    depends_on:
+      - elastic
+  
+  # Node exporter, Grafana, Prometheus
+  grafana:
+    image: grafana/grafana
+    links: 
+      - "prometheus"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    links: 
+      - "node-exporter"
+    volumes:
+      - "./steps/11-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml"
+    depends_on:
+      - node-exporter
+  
+  node-exporter:
+    image: tray/node_exporter
+    ports:
+      - "9100:9100"
+
+  # Kibna and elasticsearch
+  kibana:
+    image: kibana
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports: 
+      - "5601:5601"
+    links:
+      - "elastic:elasticsearch"
+    depends_on:
+      - elastic
+  
+  elastic:
+    image: elasticsearch
+    ports: 
+      - "9200:9200"
+
+

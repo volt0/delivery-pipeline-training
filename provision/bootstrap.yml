@@ -1,7 +1,6 @@
 ---
 - hosts: app
-  remote_user: debian
-  become_user: root
+  remote_user: root
   tasks:
   - locale_gen:
       name: en_US.UTF-8

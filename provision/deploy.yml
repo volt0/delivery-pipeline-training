@@ -1,7 +1,6 @@
 ---
 - hosts: app
-  remote_user: debian
-  become_user: root
+  remote_user: root
   become: true
   handlers:
     - name: reload crudtest

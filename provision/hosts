@@ -1,6 +1,2 @@
 [app]
-box-1.docker
-box-4.docker
-[db]
-box-2.docker
-box-3.docker
+172.18.0.6
