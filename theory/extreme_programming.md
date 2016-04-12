@@ -32,6 +32,7 @@ make it a good fit for reaching two-star agile fluency.
 * iteration planning: Iteration planning starts each iteration.
 
 ## Managing
+
 * optimize last: Give the team a dedicated open work space.
 * steady pace: Set a sustainable pace.
 * stand-up meeting: A stand up meeting starts each day.

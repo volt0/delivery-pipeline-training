@@ -14,8 +14,6 @@ Green is idle.
 * http://martinfowler.com/bliki/BlueGreenDeployment.html
 * https://medium.com/aws-activate-startup-blog/upgrades-without-tears-part-1-introduction-to-blue-green-deployment-on-aws-e5bcf90eb60b#.5l0jjzvdi
 
-??? Database
-
 
 ## Canary Releases
 

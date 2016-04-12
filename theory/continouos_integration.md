@@ -33,7 +33,7 @@ binaries, but also generates documentation, website pages, statistics and
 distribution media (such as Debian DEB, Red Hat RPM or Windows MSI files).
 
 
-### Make the build self-testing[edit]
+### Make the build self-testing
 
 Once the code is built, all tests should run to confirm that it behaves as the
 developers expect it to behave.
@@ -102,31 +102,32 @@ is continuous deployment, which calls for the software to be deployed directly
 into production, often with additional automation to prevent defects or
 regressions.
 
+## GreenLine // Always-Green
 
-## More
+Andon - stop the line, if defects!
+Visualize !
 
-Problem:
+## Extreme Programming AddOns
 
+
+* Pair Programming
+* TDD
+* Bug -> Test
 * Refactoring
-* Incremental Design
-* Работа над одной кодовой базой
-* Болезненные merge
-* Опасность сломать работающий функционал 
 
-Solution:
 
-* VCS as communication point (github)
-* README driven (lean)
-* standups
-* chat (slack, hipchat)
-* branching (only trunk vs feature branches)
+## Concept
+
 * pre/post coordination (Coder Review vs Pair Programming)
 
 
-Built-in Quality
+## More about Tests
 
-* autotests 
-  * built in quality (andon)
-  * pyramid and where to start (DHH hangouts)
-* green line (andon) - stop the line, if waste
-* Visual Management
+* test enought
+* prefer functional tests over units (Double Code/ Double mistakes)
+* Mock vs Stubs
+* pyramid and where to start (DHH hangouts)
+* Generative Tests
+* Acceptance Tests
+* Smoke Tests
+* Infrastructure Tests

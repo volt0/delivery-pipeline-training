@@ -45,7 +45,7 @@ without a big plough.
 * http://techblog.netflix.com/2011/07/netflix-simian-army.html
 
 
-### House Monkey
+### house monkey
 
 Simian Army consists of services (Monkeys) in the cloud for generating various
 kinds of failures, detecting abnormal conditions, and testing our ability to
