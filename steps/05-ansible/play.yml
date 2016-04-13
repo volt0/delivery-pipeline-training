@@ -1,0 +1,46 @@
+---
+- hosts: app
+  user: root
+  # vars
+  vars:
+    key: value
+    flag: true
+  # tasks
+  tasks:
+    - name: 'ping'
+      shell: 'uname'
+    - name: 'config'
+      copy:
+        src: 'myfile.txt'
+        dest: /tmp/myfile.txt
+    - name: 'config'
+      template:
+        src: 'mytpl.txt.j2'
+        dest: /tmp/mytpl.txt
+    - name: 'when'
+      debug:
+        msg: 'play with when'
+      when: flag
+    - name: 'with_items'
+      debug:
+        msg: '* {{item}}'
+      with_items:
+        - 'one'
+        - 'two'
+        - 'tree'
+      notify:
+        - reload
+    - name: 'with_file'
+      debug:
+        msg: '* {{item}}'
+      with_fileglob:
+        - '../*'
+    - include: part.yml
+    - include_vars: vars.yml
+    - name: 'vars'
+      debug:
+        msg: 'Included var {{some}}'
+  handlers:
+    - name: 'reload'
+      debug:
+        msg: 'Reloaded!!!!'
