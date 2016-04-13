@@ -27,7 +27,7 @@ d start test-1
 
 d rm test-1
 
-d run --name=noisy -d ubuntu /bin/bash -c 'while tru; do date; sleep 5; done""'
+d run --name=noisy -d ubuntu /bin/bash -c 'while true; do date; sleep 5; done'
 
 d logs noisy
 

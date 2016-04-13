@@ -1,0 +1,6 @@
+{
+  "name": "CRUD",
+  "description": "CRUD sample app",
+  "repository": "https://github.com/devops-ru/delivery-pipeline-training.git",
+  "image": "heroku/nodejs"
+}
