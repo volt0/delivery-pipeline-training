@@ -15,9 +15,18 @@ intro about prometheus
 
 ## Data model:  Metric names, labels and values
 
+Every time series is uniquely identified by its metric name and a set of key-value pairs, also known as labels.
+
 `` <metric name>{<label name>=<label value>, ...} ``
 
 api_http_requests_total{method="POST", handler="/messages"}
+
+## Metric types
+
+* __Counter__ A counter is a cumulative metric that represents a single numerical value that only ever goes up. 
+* __Gauge__ A gauge is a metric that represents a single numerical value that can arbitrarily go up and down.
+* __Histogram__ A histogram samples observations (usually things like request durations or response sizes) and counts them in configurable buckets. 
+* __Summary__ Similar to a histogram, a summary samples observations (usually things like request durations and response sizes).
 
 ## Query Examples
 
@@ -68,7 +77,7 @@ topk(2, node_memory_MemTotal)/1024/1024/1024
 ## Start prometheus, node_exporter and grafana
 
 #### Ports
-* __9090__ Prometheus
+* __9090__ Prometheus (additional http://host:9090/consoles/node.html)
 * __3000__ Grafana
 * __9100__ Node-Exporter
 
