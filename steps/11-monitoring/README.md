@@ -74,6 +74,60 @@ topk(2, node_memory_MemTotal)/1024/1024/1024
 
 ```
 
+## Config examples
+
+Example prometheus config file
+
+```
+global:
+  scrape_interval:  15s
+
+scrape_configs:
+  - job_name: 'node_exporter'
+    target_groups:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'db'
+    consul_sd_configs:
+      - server:   '127.0.0.1:5361'
+      - services: ['db']
+```
+
+Example alertmanager (old version)
+
+```
+notification_config {
+  name: "slack"
+  slack_config {
+    webhook_url: "https://hooks.slack.com/services/[key]"
+    channel: "#errors"
+  }
+}
+aggregation_rule {
+  # Optional filtering
+  filter {
+     name_re:  "instance"
+     value_re: "ADDR:9002"
+  }
+  repeat_rate_seconds: 3600
+  notification_config_name: "slack"
+}
+```
+
+Rules
+
+```
+ALERT InstanceDown
+  IF up == 0
+  FOR 5m
+  WITH {
+    severity="page"
+  }
+  SUMMARY "Instance {{$labels.instance}} down"
+  DESCRIPTION "@all  {{$labels.instance}} of job {{$labels.job}} has been down for more than 5 minutes."
+
+```
+
 ## Start prometheus, node_exporter and grafana
 
 #### Ports
