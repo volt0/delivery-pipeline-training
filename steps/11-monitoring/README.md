@@ -8,6 +8,10 @@ intro about prometheus
 * metrics from app
 * dashboards & search by grafana
 
+## Architecture
+
+![Architecture](https://prometheus.io/assets/architecture.svg)
+
 
 ## Data model:  Metric names, labels and values
 
@@ -30,6 +34,15 @@ node_memory_MemFree{instance='localhost:9100'}
 =~: Select labels that regex-match the provided string (or substring).
 !~: Select labels that do not regex-match the provided string (or substring).
 
+# Free memory in GiB
+node_memory_MemFree{instance='localhost:9100'} /1024/1024/1024
+
+# Used memory in %
+(node_memory_MemTotal{job='node',instance='localhost:9100'} - node_memory_MemFree{job='node',instance='localhost:9100'}) / node_memory_MemTotal{job='node',instance='localhost:9100'} * 100
+
+# Return a whole range of time (5 minutes) 
+node_memory_MemFree{instance='localhost:9100'} [5m]
+
 # Time durations are specified as a number, followed immediately by one of the following units:
 s - seconds
 m - minutes
@@ -37,12 +50,6 @@ h - hours
 d - days
 w - weeks
 y - years
-
-# Free memory in GiB
-node_memory_MemFree{instance='localhost:9100'} /1024/1024/1024
-
-# Return a whole range of time (5 minutes) 
-node_memory_MemFree{instance='localhost:9100'} [5m]
 
 # 5 minutes ago 
 node_memory_MemFree{instance='localhost:9100'} offset 5m
@@ -58,13 +65,17 @@ topk(2, node_memory_MemTotal)/1024/1024/1024
 
 ```
 
-
 ## Start prometheus, node_exporter and grafana
 
 #### Ports
 * __9090__ Prometheus
 * __3000__ Grafana
 * __9100__ Node-Exporter
+
+### Grafana
+
+__Login:__    admin
+__Password:__ admin
 
 
 Run with docker compose 
@@ -80,9 +91,5 @@ Or run throw docker run
 sudo docker run --name node-exporter -p 9100:9100 tray/node_exporter
 sudo docker run --name box-prometheus -p 9090:9090 --link node-exporter -v [REPO DIR]/steps/11-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml -d prom/prometheus
 sudo docker run --name box-grafana --link box-prometheus:box-prometheus.docker -p 3000:3000 -d grafana/grafana
-
-# Grafana
-# Login:    admin
-# Password: admin
 ```
 
