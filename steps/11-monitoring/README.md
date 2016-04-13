@@ -11,7 +11,7 @@ intro about prometheus
 
 ## Data model:  Metric names, labels and values
 
-<metric name>{<label name>=<label value>, ...}
+`` <metric name>{<label name>=<label value>, ...} ``
 
 api_http_requests_total{method="POST", handler="/messages"}
 
