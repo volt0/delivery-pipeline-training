@@ -77,7 +77,7 @@ If you use docker v1.10 and docker-compose v1.7, just run
 ```bash
 sudo docker-compose up 
 
-# Deploy app to container, do not forget edit hosts file before
+# Deploy app to container, do not forget edit provision/hosts file before
 # $ ansible-playbook -i hosts bootstrap.yml
 # log in to app container and run 
 # $ cd /opt/crudtest/rieman
@@ -89,8 +89,6 @@ sudo docker-compose up
 ```
 
 Or run each container
-
-:TODO Add run node_exporter
 
 ``` bash
 sudo docker run --name box-elastic -p 9200:9200 -d elasticsearch
@@ -104,6 +102,7 @@ sudo docker run --name box-app --link box-elastic:box-elastic.docker -p 5000:500
 # $ cd /opt/crudtest/rieman
 # $ lein run
 
+sudo docker run --name node-exporter -p 9100:9100 tray/node_exporter
 sudo docker run --name box-prometheus -p 9090:9090 --link node-exporter -v [REPO DIR]/steps/11-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml -d prom/prometheus
 
 sudo docker run --name box-grafana --link box-prometheus:box-prometheus.docker -p 3000:3000 -d grafana/grafana
