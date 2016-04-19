@@ -1,12 +1,14 @@
----
 language: node_js
 node_js: 5
 addons:
   postgresql: '9.4'
 before_script:
-  - bash install.sh
+- bash install.sh
 script:
-  - source env.sh && npm run test
+- source env.sh && npm run test
 notifications:
   slack: devops-training-spb:kfjTXFxdFQxyBbAJ0UtYVqOe
-
+deploy:
+  provider: heroku
+  api_key:
+    secure: opk5d1Thek8dzBG4W5Ujinh6KiL18PB2odGckGeu269ap8fPOKecqFNZufEDRj/i/P9/gUmsAeHbwA/g1PRc9rqPTOsjEAtCbgj1Gk1GiP/xugXnHeBci2toGZQmd3Q0G+i4f4m76/M187hAB4D0Vjoh1FjEp9OV6PSKUR+DwBu+D8I5Mb1Q+U1m5Z1RcZQSvnaHu2iaUNjjD7MmiMCXG+nfxutiSF60HmdsWl/i0QQANMm7pbcplPgw4/jLYzw0mp2cYBs/mlkMOGNO727L3TbbBTd23MIVRzVvoDppsDLdUE8/+mUgICNKlFlQgenNUQ9z/xsPEG6sb9p3J2W0sRkjYXiJyO0I2GGErhyKnwC/bOUbVrnIqhAPw/DyVIiGkXg1mZcoNJ0wMYYbTtOHa3zxCaSXxHbobU0C6yLM/fLaptBpRqDAkeWn50mjgo1acqGwg1SwsqBYZlYqRdfngIhahQJfDJEpJw3y8U0k3hJ99GvoKwkz1PhT5DJckKR9vsJAuUX0xmEY2d8bqHsVsbSqZAjabjS9nOCn2S68LI85TOjewyPx9IvzVJajIbOJ2DvgTiJO59suvVIsvUvJP3DOFOHnFyRPqX83OQzCu/lNlvAAQDq2zml7wuUBCO6Qm3wm4VmY3DOnIKOYbtEXag/oOEKxekyAS71VuTRty9A=
